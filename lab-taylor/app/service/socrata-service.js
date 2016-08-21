@@ -12,7 +12,7 @@ function socrataService($log, $q, $http) {
     headers: {
       'X-App-Token': `${__SOCRATA_TOKEN__}`
     },
-    params: {'$limit': 5}
+    params: {'$limit': 50}
   };
 
   service.getData = function() {
