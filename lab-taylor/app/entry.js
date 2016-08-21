@@ -19,3 +19,5 @@ socrataApp.config(['$routeProvider', '$logProvider', function($routeProvider, $l
     redirectTo: '/about'
   });
 }]);
+
+require('./service/socrata-service');

@@ -12,21 +12,24 @@ function socrataService($log, $q, $http) {
     headers: {
       'X-App-Token': `${__SOCRATA_TOKEN__}`
     }
+  };
 
-    service.getData = function() {
-      $log.debug('socrataService.getData')
+  service.getData = function() {
+    $log.debug('socrataService.getData');
 
-      return $q((resolve, reject) => {
+    return $q((resolve, reject) => {
+      $http.get(url, config)
         .then(res => {
-          $log.log(`GET ${url}: ${res.status} success`)
-          this.data = res.data
-          resolve(this.data)
+          $log.log(`GET ${url}: ${res.status} success`);
+          this.data = res.data;
+          resolve(this.data);
         })
         .catch(err => {
-          $log.error(`GET ${url}: ${err.status} error`)
-          reject(err)
-        })
-      })
-    }
+          $log.error(`GET ${url}: ${err.status} error`);
+          reject(err);
+        });
+    });
   };
+  
+  return service;
 }
