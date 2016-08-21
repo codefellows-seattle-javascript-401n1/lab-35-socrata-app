@@ -11,7 +11,8 @@ function socrataService($log, $q, $http) {
   const config = {
     headers: {
       'X-App-Token': `${__SOCRATA_TOKEN__}`
-    }
+    },
+    params: {'$limit': 5}
   };
 
   service.getData = function() {
@@ -21,6 +22,7 @@ function socrataService($log, $q, $http) {
       $http.get(url, config)
         .then(res => {
           $log.log(`GET ${url}: ${res.status} success`);
+          $log.log(res.data);
           this.data = res.data;
           resolve(this.data);
         })
@@ -30,6 +32,6 @@ function socrataService($log, $q, $http) {
         });
     });
   };
-  
+
   return service;
 }

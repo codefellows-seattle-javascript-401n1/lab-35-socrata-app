@@ -21,3 +21,5 @@ socrataApp.config(['$routeProvider', '$logProvider', function($routeProvider, $l
 }]);
 
 require('./service/socrata-service');
+require('./component/data-item');
+require('./component/data-list');

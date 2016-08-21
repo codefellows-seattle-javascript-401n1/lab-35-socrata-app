@@ -8,7 +8,7 @@ const ExtractText = require('extract-text-webpack-plugin');
 
 // module constants
 const production = process.env.NODE_ENV === 'production';
-const apiURL = process.env.API_URL || 'http://localhost:3000';
+const apiURL = process.env.API_URL || 'https://data.seattle.gov/resource/pu5n-trf4.json';
 const token = process.env.SOCRATA_TOKEN || 'y0nn5WheJncttwwxpIWJEbsSK';
 
 // webpack config
@@ -44,7 +44,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   sassLoader: {
-    includePaths: [`${__dirname}/app/scss/lib`]
+    includePaths: [`${__dirname}/app/scss/`]
   },
   postcss: function(){
     return [autoprefixer];

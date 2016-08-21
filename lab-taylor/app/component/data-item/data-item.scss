@@ -1,0 +1,16 @@
+@import "_theme";
+
+.app-data-item {
+  ul {
+    list-style: none;
+  }
+
+  li {
+    list-style: none;
+    border: 1px $app-focus solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: 80%;
+  }
+}
