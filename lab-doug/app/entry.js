@@ -7,35 +7,53 @@ require('./scss/base.scss');
 // npm modules
 const angular = require('angular');
 const ngRoute = require('angular-route');
+const ngAnimate = require('angular-animate');
 
 // angular modules
-angular.module('demoApp', [ngRoute])
-.config(['$routeProvider', function($routeProvider){
+//
+/**
+ * ngRoute module is injected in to an app module to support routing functionality in the app module/app(by adding $routeProvider and $route service).   Each module can have a "config". The "config" is the place were we inject providers ($routeProvider in this case) into the shuttleBuzz module.  A "provider" is used to configure a "service" for that whole module. In this case, we are configuring the $route service provided by the ngRoute module.
+ */
+
+angular.module('shuttleBuzz', [ngRoute])
+.config(['$routeProvider', '$logProvider', function($routeProvider, $logProvider){
   $routeProvider
-  .when('/signup', {
-    template: require('./view/signup/signup.html'),
-    controller: 'SignupController',
-    controllerAs: 'signupCtrl',
-  })
-  .when('/signin', {
-    template: require('./view/signin/signin.html'),
-    controller: 'SigninController',
-    controllerAs: 'signinCtrl',
-  })
-  .when('/home', {
+  .when('/', {
     template: require('./view/home/home.html'),
-    controller: 'HomeController',
-    controllerAs: 'homeCtrl',
+  })
+  .when('/home',{
+    redirectTo: '/',
+  })
+  .when('/about', {
+    template: require('./view/about/about.html'),
+  })
+  .when('/data', {
+    template: require('./view/data/data.html'),
+    controller: 'ShuttleDataController',
+    controllerAs: 'shuttleDataCtrl',
+    resolve: {
+      shuttleStops: ['$http', function($http){
+        return $http.get('https://data.melbourne.vic.gov.au/resource/mbbv-v68r.json')
+        .then(
+          function success(res) {console.log('success, res.data: ', res.data[0]);
+            return res.data;},
+          function failure() {return false;}
+        );
+      }],
+    },
   })
   .otherwise({
-    redirectTo: '/signin',
+    template: require('./view/otherwise/fourohfour.html'),
+    controller: 'FourOhFourController',
   });
 }]);
 
 // angular services
-require('./service/auth-service');
-
 // angular controllers
-require('./view/signup');
-require('./view/signin');
+require('./view/otherwise/fourohfour-controller');
+
+require('./view/about');
+require('./view/data');
 require('./view/home');
+
+//components
