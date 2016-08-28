@@ -1,0 +1,13 @@
+@import "_theme";
+
+.appBurger {
+  position: relative;
+  height: 25px;
+  border: solid thin $app-default;
+
+  .fa-bars {
+    position: absolute;
+    z-index: 100;
+    font-size: 25px;
+  }
+}

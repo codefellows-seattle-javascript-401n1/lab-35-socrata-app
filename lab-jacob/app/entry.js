@@ -30,3 +30,5 @@ require('./view/data');
 //services
 require('./service/socrata-data-service');
 //components
+require('./component/nav');
+require('./component/burger-menu');

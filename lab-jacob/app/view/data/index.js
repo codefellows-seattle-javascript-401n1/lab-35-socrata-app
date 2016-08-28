@@ -1,4 +1,5 @@
 'use strict';
+require('./data.scss');
 
 const angular = require('angular');
 const socData = angular.module('socData');
