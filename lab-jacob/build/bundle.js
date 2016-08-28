@@ -53,13 +53,24 @@
 	var ngRoute = __webpack_require__(8);
 	var socData = angular.module('socData', [ngRoute]);
 
-	socData.config('$routeProvider', function ($routeProvider) {
+	socData.config(['$routeProvider', function ($routeProvider) {
 	  $routeProvider.when('/', {
 	    template: __webpack_require__(10)
+	  }).when('/about', {
+	    redirectTo: '/'
+	  }).when('/data', {
+	    template: __webpack_require__(11),
+	    controller: 'DataController',
+	    controllerAs: 'DataCtrl'
+	  }).otherwise('/', {
+	    template: __webpack_require__(12)
 	  });
-	});
+	}]);
 
+	//controller
+	__webpack_require__(13);
 	//services
+	__webpack_require__(14);
 	//components
 
 /***/ },
@@ -32945,7 +32956,75 @@
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"appHome\">\n  <h1>here's home!</h1>\n</main>\n";
+	module.exports = "<main class=\"appAbout\">\n  <h1>Here's the home page!</h1>\n</main>\n";
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	module.exports = "<main class=\"appData\">\n  <p>some data be goin here</p>\n</main>\n";
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	module.exports = "";
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var angular = __webpack_require__(6);
+	var socData = angular.module('socData');
+
+	socData.controller('DataController', ['socrataDataService', function (socrataDataService) {
+	  var _this = this;
+
+	  socrataDataService.fetchData().then(function (data) {
+	    _this.data = data;
+	  }).catch(function (err) {
+	    alert(err);
+	  });
+	}]);
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var angular = __webpack_require__(6);
+
+	angular.module('socData').factory('socrataDataService', ['$log', '$q', '$http', socrataDataService]);
+
+	function socrataDataService($log, $q, $http) {
+	  var service = {};
+	  var url = ("https://data.seattle.gov/resource") + '/rm6v-4hz8.json'; // figure out endpoint for Socrata API
+	  var config = {
+	    headers: {
+	      'Content-Type': 'application/json',
+	      'Accept': 'application/json',
+	      'X-App-Token': 'xDXT9pP2CqLC0d5hoA5BNevwU'
+	    }
+	  };
+
+	  service.fetchData = function () {
+	    $log.debug('socrataDataService.fetchData');
+	    return $q(function (resolve, reject) {
+	      $http.get(url, config).then(function (res) {
+	        $log.log('GET ' + url + ':' + res.status + ' success!');
+	        resolve(res);
+	      }).catch(function (err) {
+	        $log.error('GET ' + url + ':' + err.status + ' faliure');
+	        reject(err);
+	      });
+	    });
+	  };
+
+	  return service;
+	}
 
 /***/ }
 /******/ ]);

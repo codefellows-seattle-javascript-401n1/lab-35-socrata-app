@@ -5,12 +5,12 @@ const webpack = require('webpack');
 const extractText = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-const apiUrl = process.env.__API_URL__ || 'http://localhost:3000';
+const apiURL = process.env.API_URL || 'https://data.seattle.gov/resource';
 
 var plugins = [
   new extractText('bundle.css'),
   new webpack.DefinePlugin({
-    __API_URL__: JSON.stringify(apiUrl)
+    __API_URL__: JSON.stringify(apiURL)
   })
 ];
 
