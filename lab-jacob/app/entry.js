@@ -18,7 +18,7 @@ socData.config(['$routeProvider', function($routeProvider) {
   .when('/data', {
     template: require('./view/data/data.html'),
     controller: 'DataController',
-    controllerAs: 'DataCtrl'
+    controllerAs: 'dataCtrl'
   })
   .otherwise({
     template: require('./view/404/404.html')

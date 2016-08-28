@@ -6,7 +6,7 @@ angular.module('socData').factory('socrataDataService', ['$log', '$q', '$http', 
 
 function socrataDataService($log, $q, $http){
   let service = {};
-  let url = `${__API_URL__}/rm6v-4hz8.json?priority=education`; // figure out endpoint for Socrata API
+  let url = `${__API_URL__}/rm6v-4hz8.json`; // figure out endpoint for Socrata API
   let config = {
     headers: {
       'Content-Type': 'application/json',
