@@ -5,8 +5,8 @@ const angular = require('angular');
 const socData = angular.module('socData');
 
 socData.controller('DataController', ['socrataDataService', function(socrataDataService){
-  socrataDataService.fetchData().
-  then((data) => {
+  socrataDataService.fetchData()
+  .then((data) => {
     console.log(data);
     this.data = data;
   })
