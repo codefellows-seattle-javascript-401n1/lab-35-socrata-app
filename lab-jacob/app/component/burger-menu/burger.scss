@@ -1,0 +1,49 @@
+@import "_theme";
+
+.appBurger {
+  position: relative;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+
+
+  .fa-bars {
+    position: absolute;
+    margin: 100% auto 5% auto;
+    padding: 20% 20% 20% 20%;
+    border: thin solid $app-light;
+    border-radius: 20px 20px 20px 20px;
+    z-index: 100;
+    font-size: 25px;
+    color: $app-light;
+
+    &:hover {
+      background-color: $app-default;
+    }
+  }
+}
+
+.navExit.ng-leave {
+  animation: my_fade_animation 0.3s linear;
+  * {
+    animation: my_fade_animation 0.3s linear;
+  }
+}
+
+.navExit.ng-enter {
+  animation: my_fade_animation 0.1s linear reverse;
+  * {
+    animation: my_fade_animation 0.1s linear reverse;
+  }
+}
+
+@keyframes my_fade_animation {
+  from {
+    top: 0;
+  } to {
+    top: -25px;
+  }
+}

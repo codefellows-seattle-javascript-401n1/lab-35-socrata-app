@@ -1,0 +1,13 @@
+@import "_theme";
+
+.appData {
+  display:flex;
+  flex-direction: column;
+
+  h2 {
+    margin: 10% auto 10% auto;
+    text-align: center;
+    color: $app-text;
+    border-bottom: solid thin $app-light;
+  }
+}
