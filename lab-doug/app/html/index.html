@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shuttleBuzz">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shooter-Log-FE</title>
+  <script src="bundle.js"></script>
+  <link rel="stylesheet" href="bundle.css">
+</head>
+<body>
+  <h3>ShuttleBuzz h3 tag  in index.html</h3>
+
+  <!--ng-view is a directive (ngView) that comes from ngRoute module we injected in the app module in the entry.js file.  ngView  complements the $route service by including the rendered template of the current route into the main layout (index.html) file. Every time the current route changes, the included view changes with it according to the configuration of the $route service.-->
+  <ng-view></ng-view>
+</body>
+</html>
