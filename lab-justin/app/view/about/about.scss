@@ -1,0 +1,41 @@
+@import "_theme";
+
+.home-class {
+
+  h2 {
+    font-family: 'Lobster', monospace;
+    font-style:italic;
+    color: $app-mint;
+    text-decoration: overline;
+    font-size: 60px;
+  }
+
+  .p1 {
+    font-size: 20px;
+    color: orange;
+  }
+
+  .p2,p3 {
+    display: inline-block; 
+  }
+
+  h3 {
+    color: $app-violet;
+    align-items: center;
+    float:left;
+  }
+  .murakami {
+    width: 100%;
+    height: 25%;
+    opacity: 0.7;
+    // display: flex;
+    // flex-wrap: wrap;
+  }
+}
+.murakami2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  float: right;
+}
