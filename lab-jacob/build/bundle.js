@@ -49,29 +49,31 @@
 	__webpack_require__(1);
 	__webpack_require__(2);
 
-	var angular = __webpack_require__(6);
-	var ngRoute = __webpack_require__(8);
+	var angular = __webpack_require__(11);
+	var ngRoute = __webpack_require__(13);
 	var socData = angular.module('socData', [ngRoute]);
 
 	socData.config(['$routeProvider', function ($routeProvider) {
 	  $routeProvider.when('/', {
-	    template: __webpack_require__(10)
+	    template: __webpack_require__(15)
 	  }).when('/about', {
 	    redirectTo: '/'
 	  }).when('/data', {
-	    template: __webpack_require__(11),
+	    template: __webpack_require__(16),
 	    controller: 'DataController',
-	    controllerAs: 'DataCtrl'
-	  }).otherwise('/', {
-	    template: __webpack_require__(12)
+	    controllerAs: 'dataCtrl'
+	  }).otherwise({
+	    template: __webpack_require__(17)
 	  });
 	}]);
 
 	//controller
-	__webpack_require__(13);
+	__webpack_require__(18);
 	//services
-	__webpack_require__(14);
+	__webpack_require__(21);
 	//components
+	__webpack_require__(22);
+	__webpack_require__(25);
 
 /***/ },
 /* 1 */
@@ -89,15 +91,20 @@
 /* 3 */,
 /* 4 */,
 /* 5 */,
-/* 6 */
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(7);
+	__webpack_require__(12);
 	module.exports = angular;
 
 
 /***/ },
-/* 7 */
+/* 12 */
 /***/ function(module, exports) {
 
 	/**
@@ -31870,15 +31877,15 @@
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 8 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(9);
+	__webpack_require__(14);
 	module.exports = 'ngRoute';
 
 
 /***/ },
-/* 9 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/**
@@ -32953,36 +32960,39 @@
 
 
 /***/ },
-/* 10 */
+/* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"appAbout\">\n  <h1>Here's the home page!</h1>\n</main>\n";
+	module.exports = "<main class=\"appAbout\">\n  <h1>Welcome!</h1>\n  <p>You reached a socrata database for youth education in Seattle.</p>\n  <p>This page contains data from the Seattle City youth and education initiative, check out the data tab for some more info.</p>\n</main>\n";
 
 /***/ },
-/* 11 */
+/* 16 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"appData\">\n  <p>some data be goin here</p>\n</main>\n";
+	module.exports = "<main class=\"appData\">\n  <h2>Youth and Education data: </h2>\n\n  <p>{{dataCtrl.data}}</p>\n</main>\n";
 
 /***/ },
-/* 12 */
+/* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "";
+	module.exports = "<main class=\"app404\">\n  <h2>404!</h2>\n  <p>where ya going silly :P</p>\n</main>\n";
 
 /***/ },
-/* 13 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var angular = __webpack_require__(6);
+	__webpack_require__(19);
+
+	var angular = __webpack_require__(11);
 	var socData = angular.module('socData');
 
 	socData.controller('DataController', ['socrataDataService', function (socrataDataService) {
 	  var _this = this;
 
 	  socrataDataService.fetchData().then(function (data) {
+	    console.log(data);
 	    _this.data = data;
 	  }).catch(function (err) {
 	    alert(err);
@@ -32990,12 +33000,19 @@
 	}]);
 
 /***/ },
-/* 14 */
+/* 19 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 20 */,
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var angular = __webpack_require__(6);
+	var angular = __webpack_require__(11);
 
 	angular.module('socData').factory('socrataDataService', ['$log', '$q', '$http', socrataDataService]);
 
@@ -33025,6 +33042,57 @@
 
 	  return service;
 	}
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(23);
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 24 */,
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(26);
+
+	var angular = __webpack_require__(11);
+	var socData = angular.module('socData');
+
+	socData.component('appBurger', {
+	  template: __webpack_require__(28),
+	  controller: 'BurgerController'
+	});
+
+	socData.controller('BurgerController', ['$log', HamController]);
+
+	function HamController($log) {
+	  $log.debug('nav menu go!');
+	  this.showNav = true;
+	}
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 27 */,
+/* 28 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"appBurger\">\n  <i class=\"fa fa-bars\" ng-click=\"$Ctrl.showNav = !$Ctrl.showNav\"></i>\n  <appNav class=\"navExit\" ng-if=\"$Ctrl.showNav\"></appNav>\n</div>\n";
 
 /***/ }
 /******/ ]);

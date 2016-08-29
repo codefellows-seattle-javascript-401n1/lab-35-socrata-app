@@ -9,9 +9,9 @@ socData.component('appBurger', {
   controller: 'BurgerController'
 });
 
-socData.controller('BurgerController', ['$log', HamController]);
+socData.controller('BurgerController', ['$log', BurgerController]);
 
-function HamController($log){
+function BurgerController($log){
   $log.debug('nav menu go!');
   this.showNav = true;
 }

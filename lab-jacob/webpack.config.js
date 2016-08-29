@@ -31,7 +31,7 @@ module.exports = {
     loaders: [
       {
         test: /\.scss$/,
-        loader: extractText.extract('style', 'css!postcss!sass!')
+        loader: extractText.extract('style', 'css!postcss!resolve-url!sass?sourceMap!')
       },
       {
         test: /\.js$/,

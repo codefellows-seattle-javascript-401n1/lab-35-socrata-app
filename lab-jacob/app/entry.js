@@ -5,7 +5,9 @@ require('./scss/base.scss');
 
 const angular = require('angular');
 const ngRoute = require('angular-route');
-const socData = angular.module('socData', [ngRoute]);
+const ngAnimate = require('angular-animate');
+
+const socData = angular.module('socData', [ngRoute, ngAnimate]);
 
 socData.config(['$routeProvider', function($routeProvider) {
   $routeProvider
