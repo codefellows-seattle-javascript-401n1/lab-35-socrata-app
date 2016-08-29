@@ -2,16 +2,19 @@
 
 require('./data.scss');
 
-module.exports = function(socrataApp){
-  socrataApp
-  .controller('SettingsController', ['$location', '$log', SettingsController]);
-};
+const angular = require('angular');
+const socrataApp = angular.module('socrataApp');
 
-function SettingsController($location, $log){
+socrataApp.controller('DisplayController', [ '$log', 'dataService', DisplayController ]);
 
-  this.configColor = function(){
-    $log.log('this.color', this.color);
-    $location.url('/?color=${this.color}');
-    // $location.path(`#/color=${this.color}`);
+function DisplayController($log, dataService) {
+  this.fetchData = function(){
+    $log.debug('displayCtrl.fetchData');
+    console.log('!!!!!!!!!!!', dataService);
+    // return dataService
+    return dataService.fetchData()
+    .catch(() => {
+      alert('displayCtrl.fetchData: failed to fetch Data');
+    });
   };
 }

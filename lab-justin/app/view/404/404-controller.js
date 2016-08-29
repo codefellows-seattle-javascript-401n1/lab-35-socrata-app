@@ -9,5 +9,5 @@ socrataApp.controller('FourOhFourController', ['$location', '$timeout', FourOhFo
 function FourOhFourController($location, $timeout){
   $timeout(() => {
     $location.path('/');
-  },3000);
+  },10000);
 }

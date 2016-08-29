@@ -24,6 +24,7 @@
     "browser": true
   },
   "globals": {
+    "dataUrl": false,
     "resp": false,
     "lists": false,
     "list": false,

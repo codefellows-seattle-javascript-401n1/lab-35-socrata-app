@@ -5,6 +5,14 @@ require('./about.scss');
 const angular = require('angular');
 const socrataApp = angular.module('socrataApp');
 
+// let ypos, image;
+// function parallax(){
+//   ypos = window.pageYOffset;
+//   image = document.getElementById('murakami');
+//   image.style.top = ypos * 0.5 +'px';
+// }
+// window.addEventListener('scroll', parallax);
+//
 socrataApp.controller('AboutController',['$route', '$routeParams','$rootScope', '$location', AboutController]);
 
 function AboutController($route, $routeParams, $rootScope, $location){
@@ -14,11 +22,8 @@ function AboutController($route, $routeParams, $rootScope, $location){
 
   $rootScope.$on('$routeChangeStart', function(event, next, cur){
     console.log('~~~~~~~~~~~~~', cur);
-    if( $location.path() === '/aboute'){
+    if( $location.path() === '/about'){
       console.log('!!!!!!!!!!!!!!!!!!!');
     }
   });
-
-  // this.colorBg = $routeParams.colorBg || 'black';
-  // this.colorFg = $routeParams.colorFg || 'red';
 }

@@ -1,9 +1,15 @@
-<form class="form-inline" novalidate ng-submit="settingsCtrl.configColor()" style="background-color: #{{settingsCtrl.color}}">
+<form class="form-inline" novalidate>
   <div class="form-group">
-    <label>DATA</label>
-    <!-- <input class="form-controller" type="text" ng-model="settingsCtrl.color">
-    <button type="submit">Apply</button> -->
-    <div class="data">
-    </div>
+    <label><i class="fa fa-table" aria-hidden="true"></i>  DATA</label>
+      <br>
+    <button type="button" class="btn btn-info btn-lg" ng-click="displayCtrl.fetchData()">Display</button>
+    <!-- <div ng-repeat="downtown in object">
+      <ul>
+
+      </ul>
+    </div> -->
+    <app-list ng-repeat="item in displayCtrl.lists" list="item">
+
+    </app-list>
   </div>
 </form>
